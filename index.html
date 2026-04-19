@@ -421,7 +421,50 @@
       .method-row { grid-template-columns: 1fr; gap: 4px; }
       .judgment-grid { grid-template-columns: 1fr; }
     }
+
+    /* ── Accordion ── */
+    .accordion-btn {
+      width: 100%;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 14px 18px;
+      color: #e6edf3;
+      font-size: 14px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: border-color 0.2s;
+    }
+    .accordion-btn:hover { border-color: #58a6ff; }
+    .accordion-icon { color: #58a6ff; font-size: 12px; transition: transform 0.2s; }
+    .accordion-verdict { margin-left: auto; }
+    .sell-badge {
+      background: rgba(255,107,107,0.15);
+      color: #ff6b6b;
+      border: 1px solid rgba(255,107,107,0.3);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
   </style>
+
+  <script>
+    function toggleAccordion(btn) {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('.accordion-icon');
+      if (content.style.display === 'none') {
+        content.style.display = 'block';
+        icon.textContent = '▲';
+      } else {
+        content.style.display = 'none';
+        icon.textContent = '▼';
+      }
+    }
+  </script>
 </head>
 <body>
 
@@ -548,6 +591,147 @@
         <span class="label">Potential Loss</span>
         <span class="value highlight-red">−$80</span>
       </div>
+    </div>
+  </div>
+
+  <!-- ── Deep Research Accordion (TradingAgents) ── -->
+  <div class="accordion-section" style="margin: 20px 0;">
+    <button class="accordion-btn" onclick="toggleAccordion(this)">
+      <span class="accordion-icon">▼</span>
+      <strong>🧠 Deep Research — TradingAgents Technical Analysis</strong>
+      <span class="accordion-verdict sell-badge">SELL Signal</span>
+    </button>
+    <div class="accordion-content" style="display:none;">
+
+      <!-- Verdict Banner -->
+      <div style="background:#2d1f1f;border:1px solid #b45a5a;border-radius:10px;padding:16px 20px;margin-bottom:16px;text-align:center;">
+        <div style="font-size:22px;font-weight:700;color:#ff6b6b;margin-bottom:6px;">⚠️ SELL — Initiate Exit</div>
+        <div style="color:#e6edf3;font-size:13px;">Price <strong>$97.31</strong> is 11% below 200 SMA ($105.88) · Target downside: <strong>$92</strong> (50 SMA) · Stop-loss if short: <strong>$105</strong></div>
+      </div>
+
+      <!-- Key Metrics Grid -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:16px;">
+        <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px;">
+          <div style="color:#7d8590;font-size:11px;margin-bottom:4px;">200 SMA (Long-term)</div>
+          <div style="color:#ff6b6b;font-size:18px;font-weight:700;">$105.88 <span style="font-size:11px;color:#ff6b6b;">Bearish</span></div>
+        </div>
+        <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px;">
+          <div style="color:#7d8590;font-size:11px;margin-bottom:4px;">50 SMA (Medium-term)</div>
+          <div style="color:#3fb950;font-size:18px;font-weight:700;">$91.95 <span style="font-size:11px;color:#3fb950;">Bullish ↑</span></div>
+        </div>
+        <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px;">
+          <div style="color:#7d8590;font-size:11px;margin-bottom:4px;">10 EMA (Short-term)</div>
+          <div style="color:#ff6b6b;font-size:18px;font-weight:700;">$102.01 <span style="font-size:11px;color:#ff6b6b;">Bearish ↓</span></div>
+        </div>
+        <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px;">
+          <div style="color:#7d8590;font-size:11px;margin-bottom:4px;">RSI (April 17)</div>
+          <div style="color:#d29922;font-size:18px;font-weight:700;">48.56 <span style="font-size:11px;color:#d29922;">Neutral</span></div>
+        </div>
+        <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px;">
+          <div style="color:#7d8590;font-size:11px;margin-bottom:4px;">MACD</div>
+          <div style="color:#3fb950;font-size:18px;font-weight:700;">+3.25 <span style="font-size:11px;color:#7d8590;">Bullish but falling</span></div>
+        </div>
+        <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px;">
+          <div style="color:#7d8590;font-size:11px;margin-bottom:4px;">ATR (Volatility)</div>
+          <div style="color:#ff6b6b;font-size:18px;font-weight:700;">3.48 <span style="font-size:11px;color:#ff6b6b;">Elevated ⚠️</span></div>
+        </div>
+        <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px;">
+          <div style="color:#7d8590;font-size:11px;margin-bottom:4px;">Volume (Apr 17)</div>
+          <div style="color:#ff6b6b;font-size:18px;font-weight:700;">125.7M <span style="font-size:11px;color:#ff6b6b;">2.5× avg ⚠️</span></div>
+        </div>
+        <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px;">
+          <div style="color:#7d8590;font-size:11px;margin-bottom:4px;">Bollinger Position</div>
+          <div style="color:#d29922;font-size:18px;font-weight:700;">Mid-band <span style="font-size:11px;color:#7d8590;">$87–$109</span></div>
+        </div>
+      </div>
+
+      <!-- Support & Resistance -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+        <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:14px;">
+          <div style="color:#3fb950;font-weight:600;margin-bottom:8px;font-size:13px;">🟢 Support Levels</div>
+          <div style="line-height:1.9;font-size:12px;">
+            <div><span style="color:#7d8590;">Immediate:</span> <strong style="color:#e6edf3;">$91.95</strong> (50 SMA)</div>
+            <div><span style="color:#7d8590;">Strong:</span> <strong style="color:#e6edf3;">$87.38</strong> (Bollinger Lower)</div>
+            <div><span style="color:#7d8590;">Critical:</span> <strong style="color:#ff6b6b;">$76.00</strong> (Feb 2026 lows)</div>
+          </div>
+        </div>
+        <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:14px;">
+          <div style="color:#ff6b6b;font-weight:600;margin-bottom:8px;font-size:13px;">🔴 Resistance Levels</div>
+          <div style="line-height:1.9;font-size:12px;">
+            <div><span style="color:#7d8590;">Immediate:</span> <strong style="color:#e6edf3;">$102.01</strong> (10 EMA)</div>
+            <div><span style="color:#7d8590;">Strong:</span> <strong style="color:#e6edf3;">$105.88</strong> (200 SMA)</div>
+            <div><span style="color:#7d8590;">Upper:</span> <strong style="color:#e6edf3;">$108.91</strong> (Bollinger Upper)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bull vs Bear -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+        <div style="background:#0f2417;border:1px solid #238636;border-radius:8px;padding:14px;">
+          <div style="color:#3fb950;font-weight:600;margin-bottom:8px;font-size:13px;">✅ Bull Case</div>
+          <ul style="font-size:12px;line-height:1.7;padding-left:16px;color:#c9d1d9;">
+            <li>Price above rising 50 SMA (medium-term up)</li>
+            <li>MACD still in bullish crossover</li>
+            <li>42% recovery from Feb lows shows strength</li>
+            <li>Strong FCF ($26.4B), 48.5% ROE, dominant position</li>
+            <li>Fundamentals fully justify long-term higher price</li>
+          </ul>
+        </div>
+        <div style="background:#2d1515;border:1px solid #b45a5a;border-radius:8px;padding:14px;">
+          <div style="color:#ff6b6b;font-weight:600;margin-bottom:8px;font-size:13px;">❌ Bear Case</div>
+          <ul style="font-size:12px;line-height:1.7;padding-left:16px;color:#c9d1d9;">
+            <li>9.7% single-day drop on 2.5× avg volume = distribution</li>
+            <li>11% below declining 200 SMA — long-term trend down</li>
+            <li>RSI dropped 79→48 in one day — momentum gut punch</li>
+            <li>Premium valuation: PEG 2.25, Forward P/E 25x — no margin of safety</li>
+            <li>High ATR (3.48) = elevated volatility risk</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Decision Summary -->
+      <div style="background:#1a1a2e;border:1px solid #4a4a6a;border-radius:8px;padding:14px;margin-bottom:12px;">
+        <div style="color:#e6edf3;font-weight:600;margin-bottom:8px;font-size:13px;">🏛️ Research Manager's Final Call</div>
+        <div style="font-size:12px;line-height:1.7;color:#c9d1d9;">
+          <strong style="color:#ff6b6b;">SELL.</strong> The most convincing evidence is the confluence of <strong>premium valuation</strong> with a <strong>clear technical failure</strong>. The fundamental story is strong but already priced in. The market, via that volume spike and rejection at the 200 SMA, signals a high probability of a corrective phase. Price action — the aggregate knowledge of all participants — trumps backward-looking financials. Wait for next earnings to "prove" the thesis risks significant downside if the breakdown continues.
+        </div>
+      </div>
+
+      <!-- Trade Plan from Report -->
+      <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:14px;">
+        <div style="color:#58a6ff;font-weight:600;margin-bottom:8px;font-size:13px;">📋 TradingAgents Trade Plan</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-size:12px;">
+          <div style="text-align:center;padding:8px;background:#0d1117;border-radius:6px;">
+            <div style="color:#7d8590;margin-bottom:4px;">Action</div>
+            <div style="color:#ff6b6b;font-weight:700;">SELL</div>
+          </div>
+          <div style="text-align:center;padding:8px;background:#0d1117;border-radius:6px;">
+            <div style="color:#7d8590;margin-bottom:4px;">Downside Target</div>
+            <div style="color:#e6edf3;font-weight:700;">$92 (50 SMA)</div>
+          </div>
+          <div style="text-align:center;padding:8px;background:#0d1117;border-radius:6px;">
+            <div style="color:#7d8590;margin-bottom:4px;">Stop-loss (if short)</div>
+            <div style="color:#e6edf3;font-weight:700;">$105–$106</div>
+          </div>
+          <div style="text-align:center;padding:8px;background:#0d1117;border-radius:6px;">
+            <div style="color:#7d8590;margin-bottom:4px;">If 50 SMA breaks</div>
+            <div style="color:#ff6b6b;font-weight:700;">Target $76</div>
+          </div>
+          <div style="text-align:center;padding:8px;background:#0d1117;border-radius:6px;">
+            <div style="color:#7d8590;margin-bottom:4px;">Re-entry signal</div>
+            <div style="color:#3fb950;font-weight:700;">Weekly close &gt;$106</div>
+          </div>
+          <div style="text-align:center;padding:8px;background:#0d1117;border-radius:6px;">
+            <div style="color:#7d8590;margin-bottom:4px;">Ideal re-entry</div>
+            <div style="color:#3fb950;font-weight:700;">$76–$80</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;padding:10px 14px;background:rgba(88,166,255,0.08);border:1px solid rgba(88,166,255,0.2);border-radius:8px;font-size:11px;color:#7d8590;text-align:center;">
+        Source: TradingAgents Deep Research · April 19, 2026 · <strong style="color:#58a6ff;">Neutral Score: 0</strong> (Aggressive=SELL, Conservative=Reduce, Neutral=Partial Sell) · <strong style="color:#ff6b6b;">Portfolio Manager: SELL</strong>
+      </div>
+
     </div>
   </div>
 
