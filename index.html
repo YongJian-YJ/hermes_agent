@@ -344,12 +344,82 @@
       padding: 16px 0;
     }
 
-    /* ─── Responsive ─── */
+    /* ─── Methodology Section ─── */
+    .methodology-box {
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 24px;
+    }
+    .methodology-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f0f6fc;
+      margin-bottom: 18px;
+    }
+    .methodology-block {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #21262d;
+    }
+    .methodology-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .methodology-heading {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #58a6ff;
+      margin-bottom: 12px;
+    }
+    .methodology-content { display: flex; flex-direction: column; gap: 6px; }
+    .method-row {
+      display: grid;
+      grid-template-columns: 140px 1fr auto;
+      gap: 10px;
+      align-items: start;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 12px;
+    }
+    .method-row:last-child { border-bottom: none; }
+    .method-source { font-weight: 600; color: #e6edf3; }
+    .method-desc { color: #7d8590; }
+    .method-status { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+    .method-status.green { background: rgba(63,185,80,0.15); color: #3fb950; }
+    .method-status.red { background: rgba(248,81,73,0.12); color: #f85149; }
+    .method-status.orange { background: rgba(210,153,34,0.12); color: #d29922; }
+
+    .judgment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .judgment-col {
+      background: rgba(255,255,255,0.03);
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .judgment-heading-bull { font-size: 12px; font-weight: 700; color: #3fb950; margin-bottom: 8px; }
+    .judgment-heading-bear { font-size: 12px; font-weight: 700; color: #f85149; margin-bottom: 8px; }
+    .judgment-item { font-size: 12px; color: #7d8590; padding: 3px 0; }
+    .judgment-item strong { color: #e6edf3; }
+    .score-guide {
+      background: rgba(255,255,255,0.03);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .score-guide-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #7d8590; margin-bottom: 8px; }
+    .score-item { display: flex; align-items: center; gap: 8px; padding: 3px 0; font-size: 12px; color: #7d8590; }
+
     @media (max-width: 480px) {
       .hero-price { font-size: 30px; }
       .hero-ticker { font-size: 26px; }
       .quick-links { grid-template-columns: 1fr 1fr; }
       .metrics-row { gap: 8px 14px; }
+      .method-row { grid-template-columns: 1fr; gap: 4px; }
+      .judgment-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -679,6 +749,158 @@
   <!-- ── Disclaimer ── -->
   <div class="disclaimer">
     ⚠️ <strong>Not financial advice.</strong> This dashboard is for informational and educational purposes only. All content is research-generated and does not constitute investment advice. Short-term stock trading is highly speculative — you can lose your entire investment. Past performance does not predict future results. Always do your own due diligence before making any investment decision.
+  </div>
+
+  <!-- ── Research Methodology ── -->
+  <div class="section-label" style="margin-top: 28px;">📝 Research Methodology & Judgment Process</div>
+
+  <div class="methodology-box">
+    <div class="methodology-title">🔬 How This Research Was Conducted</div>
+
+    <div class="methodology-block">
+      <div class="methodology-heading">Data Sources (What Was Actually Read)</div>
+      <div class="methodology-content">
+        <div class="method-row">
+          <span class="method-source">Google Finance</span>
+          <span class="method-desc">Price data, day/52-week ranges, market cap, P/E, revenue, news headlines, analyst sentiment</span>
+          <span class="method-status green">✅ Accessed</span>
+        </div>
+        <div class="method-row">
+          <span class="method-source">CNBC</span>
+          <span class="method-desc">Earnings reports, market news, co-founder departure news</span>
+          <span class="method-status green">✅ Accessed</span>
+        </div>
+        <div class="method-row">
+          <span class="method-source">Barron's</span>
+          <span class="method-desc">Analyst calls, "Buy the Dip" coverage on NFLX</span>
+          <span class="method-status green">✅ Accessed</span>
+        </div>
+        <div class="method-row">
+          <span class="method-source">Reuters</span>
+          <span class="method-desc">NFLX guidance miss and Hastings exit coverage</span>
+          <span class="method-status green">✅ Accessed</span>
+        </div>
+        <div class="method-row">
+          <span class="method-source">TheStreet Pro</span>
+          <span class="method-desc">NFLX post-earnings game plan analysis</span>
+          <span class="method-status green">✅ Accessed</span>
+        </div>
+        <div class="method-row">
+          <span class="method-source">CoinDesk / The Block</span>
+          <span class="method-desc">MSTR STRC dividend and Bitcoin catalyst details</span>
+          <span class="method-status green">✅ Accessed</span>
+        </div>
+        <div class="method-row">
+          <span class="method-source">MarketWatch / TimothSykes</span>
+          <span class="method-desc">CGON analyst upgrades and Phase 3 trial catalyst</span>
+          <span class="method-status green">✅ Accessed</span>
+        </div>
+        <div class="method-row">
+          <span class="method-source">Yahoo Finance</span>
+          <span class="method-desc">Earnings transcripts, headline sentiment</span>
+          <span class="method-status green">✅ Accessed</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="methodology-block">
+      <div class="methodology-heading">What Was NOT Done (Honesty)</div>
+      <div class="methodology-content">
+        <div class="method-row">
+          <span class="method-source">YouTube Videos</span>
+          <span class="method-desc">Only video titles were visible — no videos were watched</span>
+          <span class="method-status red">❌ Not Watched</span>
+        </div>
+        <div class="method-row">
+          <span class="method-source">Social Media / Reddit</span>
+          <span class="method-desc">Login walls and bot detection blocked access</span>
+          <span class="method-status red">❌ Blocked</span>
+        </div>
+        <div class="method-row">
+          <span class="method-source">Financial Statements (SEC Filings)</span>
+          <span class="method-desc">Only summary data from Google Finance was used — no full 10-K/10-Q read</span>
+          <span class="method-status orange">⚠️ Limited</span>
+        </div>
+        <div class="method-row">
+          <span class="method-source">Technical Chart Analysis</span>
+          <span class="method-desc">No charting software was used — only price ranges and day/52-week data</span>
+          <span class="method-status orange">⚠️ Basic</span>
+        </div>
+        <div class="method-row">
+          <span class="method-source">Real-time Data</span>
+          <span class="method-desc">All data reflects the Apr 17 close / Apr 18 after-hours — NOT live prices</span>
+          <span class="method-status orange">⚠️ Delayed</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="methodology-block">
+      <div class="methodology-heading">Judgment Framework (How Stocks Were Scored)</div>
+      <div class="judgment-grid">
+        <div class="judgment-col">
+          <div class="judgment-heading-bull">✅ Bullish Signals (+points)</div>
+          <div class="judgment-item">Price near 52-wk high: <strong>+1 pt</strong></div>
+          <div class="judgment-item">Strong Y/Y revenue growth (>15%): <strong>+2 pts</strong></div>
+          <div class="judgment-item">Beat earnings estimates: <strong>+2 pts</strong></div>
+          <div class="judgment-item">Analyst "Buy the Dip" calls: <strong>+1 pt</strong></div>
+          <div class="judgment-item">Positive news headlines: <strong>+1 pt</strong></div>
+          <div class="judgment-item">Near-term catalyst (earnings, events): <strong>+1 pt</strong></div>
+        </div>
+        <div class="judgment-col">
+          <div class="judgment-heading-bear">❌ Bearish Signals (−points)</div>
+          <div class="judgment-item">Price near 52-wk low: <strong>−2 pts</strong></div>
+          <div class="judgment-item">Missed earnings / lowered guidance: <strong>−2 pts</strong></div>
+          <div class="judgment-item">Insider selling: <strong>−1 pt</strong></div>
+          <div class="judgment-item">At all-time high with no catalyst left: <strong>−1 pt</strong></div>
+          <div class="judgment-item">Unprofitable company: <strong>−1 pt</strong></div>
+          <div class="judgment-item">Regulatory / legal concerns: <strong>−2 pts</strong></div>
+        </div>
+      </div>
+      <div class="score-guide">
+        <div class="score-guide-title">Score → Verdict</div>
+        <div class="score-item"><span class="pill bull">+4 to +6</span> Strong Buy candidate</div>
+        <div class="score-item"><span class="pill neutral" style="color:#d29922; border-color:rgba(210,153,34,0.4); background:rgba(210,153,34,0.1);">+1 to +3</span> Viable, proceed with caution</div>
+        <div class="score-item"><span class="pill neutral" style="color:#7d8590; border-color:#21262d; background:transparent;">−1 to +1</span> Neutral / Skip</div>
+        <div class="score-item"><span class="pill bear">−2 or below</span> Avoid</div>
+      </div>
+    </div>
+
+    <div class="methodology-block">
+      <div class="methodology-heading">Why NFLX Won as #1</div>
+      <div class="verdict-item" style="padding:6px 0;">
+        <span class="verdict-icon">🏆</span>
+        <span><strong>NFLX scored +5</strong> — EPS +86% Y/Y (+2), Revenue +16% (+2), Beat earnings (+2), "Buy Dip" calls (+1), Hastings exit already priced in (0). Minus: guidance cut (−1). Net: +5 → Strong Buy.</span>
+      </div>
+      <div class="verdict-item" style="padding:6px 0;">
+        <span class="verdict-icon">🥈</span>
+        <span><strong>MSTR scored +2</strong> — Bitcoin momentum (+1), STRC dividend (+1), Saylor buying spree (+1). Minus: unprofitable (−1), at 52-wk high with no pullback (−1), crypto binary risk (−1). Net: +2 → Viable but risky.</span>
+      </div>
+      <div class="verdict-item" style="padding:6px 0;">
+        <span class="verdict-icon">🥉</span>
+        <span><strong>CGON scored +1</strong> — Phase 3 win (+1), JPMorgan upgrade (+1), analyst target hikes (+1). Minus: at 52-wk HIGH (−1), insider selling (−1), unprofitable (−1), binary biotech (−1). Net: +1 → Speculative, high risk.</span>
+      </div>
+    </div>
+
+    <div class="methodology-block">
+      <div class="methodology-heading">Important Limitations</div>
+      <div class="verdict-item" style="padding:6px 0;">
+        <span class="verdict-icon">⚠️</span>
+        <span>This is <strong>NOT a SEcurities Analysis</strong> in the professional sense. No fundamental deep-dive ( Porter's 5 Forces, DCF valuation, cash flow analysis ) was performed.</span>
+      </div>
+      <div class="verdict-item" style="padding:6px 0;">
+        <span class="verdict-icon">⚠️</span>
+        <span>The primary filter was <strong>short-term catalyst availability</strong> — not long-term business quality. A good company can still be a bad 1-week trade.</span>
+      </div>
+      <div class="verdict-item" style="padding:6px 0;">
+        <span class="verdict-icon">⚠️</span>
+        <span>Sentiment scoring above is <strong>qualitative, not quantitative</strong>. No NLP, no social media scraping, no option flow analysis was conducted.</span>
+      </div>
+      <div class="verdict-item" style="padding:6px 0;">
+        <span class="verdict-icon">⚠️</span>
+        <span>Market conditions change rapidly. A catalyst that looks strong on Sunday evening may be irrelevant by Tuesday morning. <strong>Always check live prices before trading.</strong></span>
+      </div>
+    </div>
+
   </div>
 
   <div class="footer">
