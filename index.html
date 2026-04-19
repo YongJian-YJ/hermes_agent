@@ -3,175 +3,687 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Dashboard</title>
+  <title>Stock Picks — Weekly Short-Term Opportunities</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      background: #0d1117;
+      color: #e6edf3;
       min-height: 100vh;
-      color: #fff;
-      padding: 20px;
+      padding: 16px;
     }
-    
-    .container { max-width: 600px; margin: 0 auto; }
-    
+
+    /* ─── Header ─── */
     .header {
       text-align: center;
-      padding: 40px 0;
+      padding: 28px 0 20px;
+      border-bottom: 1px solid #21262d;
+      margin-bottom: 28px;
     }
-    
-    .avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      margin: 0 auto 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-    }
-    
-    h1 { font-size: 28px; margin-bottom: 8px; }
-    .subtitle { color: #888; font-size: 14px; }
-    
-    .section { margin: 24px 0; }
-    .section-title {
-      font-size: 12px;
-      text-transform: uppercase;
-      color: #888;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
-    }
-    
-    .card {
-      background: rgba(255,255,255,0.05);
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 12px;
-      transition: all 0.3s;
-    }
-    
-    .card:hover {
-      background: rgba(255,255,255,0.08);
-      transform: translateY(-2px);
-    }
-    
-    .card h3 { font-size: 16px; margin-bottom: 8px; }
-    .card p { font-size: 13px; color: #888; }
-    
-    .link-card {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-    
-    .tag {
+    .header .badge {
       display: inline-block;
-      background: rgba(102,126,234,0.2);
-      color: #667eea;
-      padding: 4px 10px;
-      border-radius: 20px;
+      background: rgba(88,166,255,0.15);
+      color: #58a6ff;
       font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(88,166,255,0.3);
+    }
+    .header h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #f0f6fc;
+      margin-bottom: 6px;
+    }
+    .header .subtitle {
+      color: #7d8590;
+      font-size: 13px;
+    }
+    .header .update-note {
+      color: #3fb950;
+      font-size: 12px;
       margin-top: 8px;
     }
-    
-    .stocks {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+
+    /* ─── Market Ticker Strip ─── */
+    .market-strip {
+      display: flex;
       gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 28px;
+      scrollbar-width: none;
     }
-    
-    .stock-card {
-      background: rgba(255,255,255,0.05);
+    .market-strip::-webkit-scrollbar { display: none; }
+    .mkt-card {
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid #21262d;
+      border-radius: 10px;
+      padding: 10px 16px;
+      text-align: center;
+      min-width: 110px;
+    }
+    .mkt-card .mkt-name { font-size: 11px; color: #7d8590; margin-bottom: 4px; }
+    .mkt-card .mkt-val { font-size: 14px; font-weight: 600; color: #f0f6fc; }
+    .mkt-card .mkt-change { font-size: 12px; font-weight: 600; margin-top: 2px; }
+    .green { color: #3fb950; }
+    .red { color: #f85149; }
+
+    /* ─── Section Labels ─── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #7d8590;
+      margin-bottom: 14px;
+      padding-left: 2px;
+    }
+
+    /* ─── Top Pick Hero Card ─── */
+    .hero-card {
+      background: linear-gradient(145deg, #161b22 0%, #0d1117 100%);
+      border: 1px solid #30363d;
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #3fb950, #58a6ff);
+      border-radius: 16px 16px 0 0;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(63,185,80,0.15);
+      color: #3fb950;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      border: 1px solid rgba(63,185,80,0.3);
+    }
+    .hero-ticker {
+      font-size: 32px;
+      font-weight: 800;
+      color: #f0f6fc;
+      letter-spacing: -0.5px;
+    }
+    .hero-company {
+      font-size: 14px;
+      color: #7d8590;
+      margin-bottom: 16px;
+    }
+    .hero-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+    .hero-price { font-size: 38px; font-weight: 800; color: #f85149; }
+    .hero-change { font-size: 18px; font-weight: 700; color: #f85149; }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .hero-meta-item .label { font-size: 10px; color: #7d8590; text-transform: uppercase; letter-spacing: 0.8px; }
+    .hero-meta-item .value { font-size: 14px; font-weight: 600; color: #e6edf3; }
+
+    /* ─── Trade Plan Box ─── */
+    .trade-plan {
+      background: rgba(88,166,255,0.08);
+      border: 1px solid rgba(88,166,255,0.2);
       border-radius: 12px;
       padding: 16px;
+      margin: 18px 0 0;
+    }
+    .trade-plan-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #58a6ff;
+      margin-bottom: 12px;
+    }
+    .trade-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .trade-row:last-child { border-bottom: none; }
+    .trade-row .label { font-size: 13px; color: #7d8590; }
+    .trade-row .value { font-size: 14px; font-weight: 700; color: #e6edf3; }
+    .trade-row .value.highlight-green { color: #3fb950; }
+    .trade-row .value.highlight-red { color: #f85149; }
+
+    /* ─── Stock Detail Cards ─── */
+    .stock-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .stock-card {
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-radius: 14px;
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+    .stock-card:hover { border-color: #30363d; }
+    .stock-card.rank-2 { border-left: 3px solid #58a6ff; }
+    .stock-card.rank-3 { border-left: 3px solid #d29922; }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+    .card-ticker-group {}
+    .card-ticker {
+      font-size: 22px;
+      font-weight: 800;
+      color: #f0f6fc;
+    }
+    .card-company {
+      font-size: 12px;
+      color: #7d8590;
+      margin-top: 2px;
+    }
+    .card-price-group { text-align: right; }
+    .card-price {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .card-change {
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .metrics-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      margin: 12px 0;
+    }
+    .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .metric .ml { font-size: 10px; color: #7d8590; text-transform: uppercase; letter-spacing: 0.5px; }
+    .metric .mv { font-size: 13px; font-weight: 600; color: #e6edf3; }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 10px 0 14px;
+    }
+    .pill {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid;
+    }
+    .pill.bull { color: #3fb950; border-color: rgba(63,185,80,0.4); background: rgba(63,185,80,0.1); }
+    .pill.bear { color: #f85149; border-color: rgba(248,81,73,0.4); background: rgba(248,81,73,0.1); }
+    .pill.neutral { color: #d29922; border-color: rgba(210,153,34,0.4); background: rgba(210,153,34,0.1); }
+
+    .card-trade-hint {
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-top: 12px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .card-trade-hint .icon { font-size: 18px; }
+    .card-trade-hint .hint-text { font-size: 12px; color: #7d8590; line-height: 1.5; }
+
+    /* ─── Bull / Bear summary ─── */
+    .verdict-box {
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .verdict-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #7d8590;
+      margin-bottom: 12px;
+    }
+    .verdict-item {
+      display: flex;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 13px;
+    }
+    .verdict-item:last-child { border-bottom: none; }
+    .verdict-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+    /* ─── Quick Links ─── */
+    .quick-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .q-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid #21262d;
+      border-radius: 12px;
+      padding: 14px 8px;
+      text-decoration: none;
+      color: #7d8590;
+      font-size: 12px;
+      font-weight: 500;
+      transition: all 0.2s;
       text-align: center;
     }
-    
-    .stock-symbol { font-weight: bold; font-size: 18px; }
-    .stock-price { color: #667eea; font-size: 20px; font-weight: bold; }
-    .stock-change { font-size: 12px; margin-top: 4px; }
-    .green { color: #4ade80; }
-    .red { color: #f87171; }
-    
+    .q-link:hover { background: rgba(255,255,255,0.07); color: #e6edf3; border-color: #30363d; }
+    .q-link .icon { font-size: 22px; }
+
+    /* ─── Disclaimer ─── */
+    .disclaimer {
+      background: rgba(248,81,73,0.06);
+      border: 1px solid rgba(248,81,73,0.15);
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 11px;
+      color: #7d8590;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
     .footer {
       text-align: center;
-      margin-top: 40px;
-      padding: 20px;
-      color: #555;
-      font-size: 12px;
+      color: #3d444d;
+      font-size: 11px;
+      padding: 16px 0;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 480px) {
+      .hero-price { font-size: 30px; }
+      .hero-ticker { font-size: 26px; }
+      .quick-links { grid-template-columns: 1fr 1fr; }
+      .metrics-row { gap: 8px 14px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <div class="avatar">📊</div>
-      <h1></h1>
+
+  <!-- ── HEADER ── -->
+  <div class="header">
+    <div class="badge">📈 Weekly Short-Term Picks</div>
+    <h1>Stock Opportunity Dashboard</h1>
+    <p class="subtitle">Research-driven candidates for a 1-week trade · $1,000 capital</p>
+    <p class="update-note">🕐 Updated April 19, 2026 · After close of trading session</p>
+  </div>
+
+  <!-- ── MARKET STRIP ── -->
+  <div class="market-strip">
+    <div class="mkt-card">
+      <div class="mkt-name">S&P 500</div>
+      <div class="mkt-val">7,126</div>
+      <div class="mkt-change green">+1.20%</div>
     </div>
-    
-    <div class="section">
-      <div class="section-title">Quick Links</div>
-      <a href="https://finance.yahoo.com" class="card link-card" target="_blank">
-        <h3>📈 Yahoo Finance</h3>
-        <p>Track stocks, market news, and analyst ratings</p>
-      </a>
-      <a href="https://www.google.com/finance" class="card link-card" target="_blank">
-        <h3>🔍 Google Finance</h3>
-        <p>Real-time quotes and portfolio tracking</p>
-      </a>
-      <a href="https://seekingalpha.com" class="card link-card" target="_blank">
-        <h3>📝 Seeking Alpha</h3>
-        <p>In-depth analysis and investment research</p>
-      </a>
+    <div class="mkt-card">
+      <div class="mkt-name">Nasdaq</div>
+      <div class="mkt-val">24,468</div>
+      <div class="mkt-change green">+1.52%</div>
     </div>
-    
-    <div class="section">
-      <div class="section-title">Watchlist</div>
-      <div class="stocks">
-        <div class="stock-card">
-          <div class="stock-symbol">AAPL</div>
-          <div class="stock-price">$270.23</div>
-          <div class="stock-change green">+2.59%</div>
-        </div>
-        <div class="stock-card">
-          <div class="stock-symbol">NVDA</div>
-          <div class="stock-price">$142.50</div>
-          <div class="stock-change green">+3.24%</div>
-        </div>
-        <div class="stock-card">
-          <div class="stock-symbol">GOOGL</div>
-          <div class="stock-price">$341.68</div>
-          <div class="stock-change green">+1.68%</div>
-        </div>
-        <div class="stock-card">
-          <div class="stock-symbol">MSFT</div>
-          <div class="stock-price">$415.20</div>
-          <div class="stock-change green">+1.12%</div>
-        </div>
-      </div>
+    <div class="mkt-card">
+      <div class="mkt-name">Dow Jones</div>
+      <div class="mkt-val">49,447</div>
+      <div class="mkt-change green">+1.79%</div>
     </div>
-    
-    <div class="section">
-      <div class="section-title">Notes</div>
-      <div class="card">
-        <h3>Market Outlook</h3>
-        <p>Tech sector remains strong. War conditions favor energy and defense. Watch Q1 earnings in late April.</p>
-        <span class="tag">Updated: Apr 18, 2026</span>
-      </div>
-      <div class="card">
-        <h3>Key Events</h3>
-        <p>• GOOGL earnings: Apr 29<br>• Fed meeting: May 7<br>• AAPL product event: May 15</p>
-        <span class="tag">Tracking</span>
-      </div>
+    <div class="mkt-card">
+      <div class="mkt-name">Russell 2K</div>
+      <div class="mkt-val">2,777</div>
+      <div class="mkt-change green">+2.11%</div>
     </div>
-    
-    <div class="footer">
-      <p>Personal Dashboard • Hermes Agent</p>
+    <div class="mkt-card">
+      <div class="mkt-name">VIX</div>
+      <div class="mkt-val">17.48</div>
+      <div class="mkt-change green">-2.56%</div>
+    </div>
+    <div class="mkt-card">
+      <div class="mkt-name">BTC</div>
+      <div class="mkt-val">~$107k</div>
+      <div class="mkt-change green">+2.8%</div>
     </div>
   </div>
+
+  <!-- ══════════════════════════════════════
+       TOP PICK — NFLX
+  ══════════════════════════════════════ -->
+  <div class="section-label">🥇 #1 — Top Pick This Week</div>
+
+  <div class="hero-card">
+    <div class="hero-badge">⭐ Best Risk/Reward This Week</div>
+    <div class="hero-ticker">NFLX</div>
+    <div class="hero-company">Netflix Inc · NASDAQ</div>
+
+    <div class="hero-price-row">
+      <span class="hero-price">$97.31</span>
+      <span class="hero-change red">▼ 9.72%</span>
+    </div>
+    <div style="font-size:12px; color:#7d8590; margin-bottom:14px;">Closed Apr 17 · After-hours: $97.29 (−0.02%)</div>
+
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">Market Cap</span>
+        <span class="value">~$430 B</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Day Range</span>
+        <span class="value">$88 – $108</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">52-Wk Range</span>
+        <span class="value">$70 – $150</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Avg Volume</span>
+        <span class="value">Very High</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">P/E Ratio</span>
+        <span class="value">~28x</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Dividend</span>
+        <span class="value">None</span>
+      </div>
+    </div>
+
+    <div class="pill-row">
+      <span class="pill bull">EPS Beat (+86% Y/Y)</span>
+      <span class="pill bull">Buy-the-Dip Analyst Calls</span>
+      <span class="pill neutral">Reed Hastings Exit</span>
+      <span class="pill bear">Soft Q2 Guidance</span>
+    </div>
+
+    <!-- Trade Plan -->
+    <div class="trade-plan">
+      <div class="trade-plan-title">📋 Trade Plan</div>
+      <div class="trade-row">
+        <span class="label">Strategy</span>
+        <span class="value">Buy-the-dip · Hold 3–5 days</span>
+      </div>
+      <div class="trade-row">
+        <span class="label">Entry Zone</span>
+        <span class="value highlight-green">$95 – $97</span>
+      </div>
+      <div class="trade-row">
+        <span class="label">Target Exit</span>
+        <span class="value highlight-green">$107 – $110</span>
+      </div>
+      <div class="trade-row">
+        <span class="label">Stop-Loss</span>
+        <span class="value highlight-red">$88 (−8%)</span>
+      </div>
+      <div class="trade-row">
+        <span class="label">Max Shares (~$1000)</span>
+        <span class="value">~10 shares</span>
+      </div>
+      <div class="trade-row">
+        <span class="label">Potential Profit</span>
+        <span class="value highlight-green">+$100 – $130</span>
+      </div>
+      <div class="trade-row">
+        <span class="label">Potential Loss</span>
+        <span class="value highlight-red">−$80</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Why NFLX / Bull / Bear ── -->
+  <div class="verdict-box">
+    <div class="verdict-title">🔍 Bull Case vs. Bear Case</div>
+    <div class="verdict-item">
+      <span class="verdict-icon">✅</span>
+      <span>Q1 EPS <strong>$1.23</strong>, up <strong>+86% Y/Y</strong> — actual earnings were strong, drop is sentiment-driven not fundamental</span>
+    </div>
+    <div class="verdict-item">
+      <span class="verdict-icon">✅</span>
+      <span>Revenue <strong>$12.25B (+16%)</strong> — continues solid growth trajectory</span>
+    </div>
+    <div class="verdict-item">
+      <span class="verdict-icon">✅</span>
+      <span><strong>Barron's, TheStreet Pro</strong> calling "Buy the Dip" — institutional contrarian signal</span>
+    </div>
+    <div class="verdict-item">
+      <span class="verdict-icon">✅</span>
+      <span>Reed Hastings exit <strong>long-anticipated</strong> — Greg Peters already Co-CEO since 2023, not a shock</span>
+    </div>
+    <div class="verdict-item">
+      <span class="verdict-icon">⚠️</span>
+      <span>Q2 revenue guidance slightly <strong>below consensus</strong> — streaming ad growth slower than hoped</span>
+    </div>
+    <div class="verdict-item">
+      <span class="verdict-icon">⚠️</span>
+      <span>Stock still has <strong>downside risk</strong> if market sentiment stays bearish into next week</span>
+    </div>
+    <div class="verdict-item">
+      <span class="verdict-icon">⚠️</span>
+      <span>At $97, stock is near <strong>psychological support</strong> but no guarantee it won't test $88–$90</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       STOCK CARDS — #2 MSTR & #3 CGON
+  ══════════════════════════════════════ -->
+  <div class="section-label">🥈 🥉 Other Candidates This Week</div>
+
+  <div class="stock-cards">
+
+    <!-- MSTR -->
+    <div class="stock-card rank-2">
+      <div class="card-header">
+        <div class="card-ticker-group">
+          <div class="card-ticker">MSTR</div>
+          <div class="card-company">Strategy Inc (fka MicroStrategy) · NASDAQ</div>
+        </div>
+        <div class="card-price-group">
+          <div class="card-price" style="color:#3fb950;">$166.52</div>
+          <div class="card-change green">▲ +11.80%</div>
+        </div>
+      </div>
+
+      <div class="pill-row">
+        <span class="pill bull">Bitcoin Proxy</span>
+        <span class="pill bull">STRC Dividend Hike</span>
+        <span class="pill neutral">Already Extended</span>
+        <span class="pill bear">Highly Volatile</span>
+      </div>
+
+      <div class="metrics-row">
+        <div class="metric">
+          <span class="ml">Market Cap</span>
+          <span class="mv">$58.4 B</span>
+        </div>
+        <div class="metric">
+          <span class="ml">Day Range</span>
+          <span class="mv">$153 – $173</span>
+        </div>
+        <div class="metric">
+          <span class="ml">52-Wk Range</span>
+          <span class="mv">$104 – $457</span>
+        </div>
+        <div class="metric">
+          <span class="ml">Revenue (Q4)</span>
+          <span class="mv">$123 M (+2%)</span>
+        </div>
+        <div class="metric">
+          <span class="ml">Net Income</span>
+          <span class="mv" style="color:#f85149;">−$12.4 B</span>
+        </div>
+        <div class="metric">
+          <span class="ml">Avg Volume</span>
+          <span class="mv">18.5 M</span>
+        </div>
+      </div>
+
+      <div class="verdict-item" style="padding:6px 0;">
+        <span class="verdict-icon">📌</span>
+        <span><strong>Catalyst:</strong> Bitcoin surging past $107k + Strategy announced semi-monthly STRC preferred dividend payments. Michael Saylor continues aggressive BTC accumulation.</span>
+      </div>
+      <div class="verdict-item" style="padding:6px 0;">
+        <span class="verdict-icon">⚠️</span>
+        <span><strong>Risk:</strong> Already up <strong>+11.8% today</strong> — entering now means buying at peak momentum. Binary dependence on Bitcoin price. Not suitable for $1,000 (too volatile).</span>
+      </div>
+
+      <div class="card-trade-hint">
+        <span class="icon">💡</span>
+        <span class="hint-text"><strong>For reference only.</strong> MSTR is a Bitcoin leveraged play — if BTC drops 5%, MSTR can drop 10–15%. Better for larger capital with high risk tolerance. Not recommended as primary pick this week.</span>
+      </div>
+    </div>
+
+    <!-- CGON -->
+    <div class="stock-card rank-3">
+      <div class="card-header">
+        <div class="card-ticker-group">
+          <div class="card-ticker">CGON</div>
+          <div class="card-company">CG Oncology Inc · NASDAQ</div>
+        </div>
+        <div class="card-price-group">
+          <div class="card-price" style="color:#3fb950;">$73.43</div>
+          <div class="card-change green">▲ +10.69%</div>
+        </div>
+      </div>
+
+      <div class="pill-row">
+        <span class="pill bull">Phase 3 Trial Win</span>
+        <span class="pill bull">JPMorgan Upgrade</span>
+        <span class="pill neutral">At 52-Wk High</span>
+        <span class="pill bear">Binary Event Risk</span>
+      </div>
+
+      <div class="metrics-row">
+        <div class="metric">
+          <span class="ml">Market Cap</span>
+          <span class="mv">$6.2 B</span>
+        </div>
+        <div class="metric">
+          <span class="ml">Day Range</span>
+          <span class="mv">$66.8 – $73.6</span>
+        </div>
+        <div class="metric">
+          <span class="ml">52-Wk Range</span>
+          <span class="mv">$19.9 – $73.6 <span style="color:#3fb950;font-size:10px;">(NEW HIGH!)</span></span>
+        </div>
+        <div class="metric">
+          <span class="ml">Revenue</span>
+          <span class="mv">$2.3 M (+409%)</span>
+        </div>
+        <div class="metric">
+          <span class="ml">Net Income</span>
+          <span class="mv" style="color:#f85149;">−$41.3 M</span>
+        </div>
+        <div class="metric">
+          <span class="ml">EPS</span>
+          <span class="mv" style="color:#f85149;">−$0.51</span>
+        </div>
+      </div>
+
+      <div class="verdict-item" style="padding:6px 0;">
+        <span class="verdict-icon">📌</span>
+        <span><strong>Catalyst:</strong> Analysts at JPMorgan + other firms boosted price targets. <strong>Insider selling</strong> detected (17,564 shares proposed for sale via 10b5-1). Timothy Sykes highlighted Phase 3 clinical win as the trigger.</span>
+      </div>
+      <div class="verdict-item" style="padding:6px 0;">
+        <span class="verdict-icon">⚠️</span>
+        <span><strong>Risk:</strong> At <strong>52-week high</strong> with zero profitability. Tiny revenue base ($2.3M). Insider selling is a red flag. Binary biotech event already priced in — the stock could sell off sharply if any bad news follows.</span>
+      </div>
+
+      <div class="card-trade-hint">
+        <span class="icon">💡</span>
+        <span class="hint-text"><strong>Speculative.</strong> CGON is a clinical-stage biotech — pure binary event gambling. Could work for 1-week but fundamentals are irrelevant; news flow drives price. Only appropriate for money you can afford to lose entirely.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Quick Links ── -->
+  <div class="section-label">🔗 Quick Research Links</div>
+  <div class="quick-links">
+    <a href="https://www.google.com/finance" class="q-link" target="_blank">
+      <span class="icon">🔍</span>
+      Google Finance
+    </a>
+    <a href="https://finance.yahoo.com" class="q-link" target="_blank">
+      <span class="icon">📊</span>
+      Yahoo Finance
+    </a>
+    <a href="https://www.barrons.com" class="q-link" target="_blank">
+      <span class="icon">📰</span>
+      Barron's
+    </a>
+    <a href="https://www.cnbc.com" class="q-link" target="_blank">
+      <span class="icon">📺</span>
+      CNBC
+    </a>
+    <a href="https://www.reuters.com" class="q-link" target="_blank">
+      <span class="icon">🌍</span>
+      Reuters
+    </a>
+    <a href="https://pro.thestreet.com" class="q-link" target="_blank">
+      <span class="icon">⚡</span>
+      TheStreet Pro
+    </a>
+  </div>
+
+  <!-- ── Disclaimer ── -->
+  <div class="disclaimer">
+    ⚠️ <strong>Not financial advice.</strong> This dashboard is for informational and educational purposes only. All content is research-generated and does not constitute investment advice. Short-term stock trading is highly speculative — you can lose your entire investment. Past performance does not predict future results. Always do your own due diligence before making any investment decision.
+  </div>
+
+  <div class="footer">
+    Stock Opportunity Dashboard · Hermes Agent · April 19, 2026
+  </div>
+
 </body>
 </html>
