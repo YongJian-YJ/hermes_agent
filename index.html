@@ -450,6 +450,35 @@
       padding: 3px 10px;
       border-radius: 20px;
     }
+
+    /* ── Raw File Blocks ── */
+    .raw-file-block {
+      margin-bottom: 14px;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .raw-file-title {
+      background: #1c2128;
+      padding: 10px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #58a6ff;
+      border-bottom: 1px solid #30363d;
+    }
+    .raw-content {
+      background: #0d1117;
+      padding: 14px;
+      font-size: 11.5px;
+      line-height: 1.65;
+      color: #c9d1d9;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      margin: 0;
+      max-height: 400px;
+      overflow-y: auto;
+    }
   </style>
 
   <script>
@@ -765,6 +794,270 @@
     <div class="verdict-item">
       <span class="verdict-icon">⚠️</span>
       <span>At $97, stock is near <strong>psychological support</strong> but no guarantee it won't test $88–$90</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       RAW RESEARCH FILES — Collapsible
+  ══════════════════════════════════════ -->
+  <div class="accordion-section" style="margin: 20px 0;">
+    <button class="accordion-btn" onclick="toggleAccordion(this)">
+      <span class="accordion-icon">▼</span>
+      <strong>📂 Raw Research Files — Individual Reports</strong>
+    </button>
+    <div class="accordion-content" style="display:none;">
+
+      <!-- Market Technical Analysis -->
+      <div class="raw-file-block">
+        <div class="raw-file-title">📊 1_analysts/market.md — Technical Analysis</div>
+        <pre class="raw-content">NFLX Technical Analysis Report - April 19, 2026
+
+## Executive Summary
+Netflix (NFLX) is currently trading at $97.31 as of April 17, 2026, showing a complex technical picture with mixed signals across different timeframes. The stock has experienced significant volatility over the past 4.5 months, declining from highs around $109 in December 2025 to lows near $76 in February 2026, followed by a substantial recovery. Current analysis reveals a critical juncture with both bullish and bearish factors at play.
+
+## Trend Analysis
+Long-term Trend (200 SMA): The 200-day Simple Moving Average stands at $105.88, significantly above the current price of $97.31. NFLX is trading 11.1% below its long-term trend benchmark, suggesting a bearish long-term posture. The 200 SMA has been declining from $108.41 on March 20 to $105.88 on April 17, confirming a downward-sloping long-term trend.
+
+Medium-term Trend (50 SMA): The 50-day SMA at $91.95 provides a more nuanced picture. The current price of $97.31 is 5.8% above the 50 SMA, indicating medium-term bullish momentum. The 50 SMA has been rising steadily from $87.17 on March 20 to $91.95 on April 17, showing clear upward momentum.
+
+Short-term Trend (10 EMA): The 10-day EMA at $102.01 reveals short-term weakness. The current price is 4.6% below the 10 EMA, suggesting short-term bearish pressure.
+
+## Momentum Analysis
+MACD: MACD line at 3.25 remains above the signal line at 3.02, maintaining a bullish crossover since early April. However, MACD has declined from 3.93 on April 16 to 3.25 on April 17, showing momentum deceleration.
+
+RSI: The RSI reading of 48.56 on April 17 represents a neutral to slightly bearish momentum reading. This is a significant decline from overbought levels of 79.09 on April 16, indicating a rapid shift from overbought to neutral territory.
+
+## Volatility Analysis
+Bollinger Bands (April 17): Upper Band: $108.91 | Lower Band: $87.38 | Current Price: $97.31 (midway between bands)
+ATR: 3.48 (elevated volatility vs 2.75 in late March)
+
+## Support & Resistance
+Key Resistance: $102.01 (10 EMA) | $105.88 (200 SMA) | $108.91 (Bollinger Upper)
+Key Support: $91.95 (50 SMA) | $87.38 (Bollinger Lower) | $76.00 (February 2026 lows)
+
+## Volume
+April 16: High $107.79 on volume 64.9M shares
+April 17: Sharp decline to $97.31 on volume 125.7M shares (massive volume spike = institutional distribution)
+
+## Bullish Factors
+1. Price above 50 SMA — medium-term bullish structure intact
+2. MACD Bullish Crossover — positive since late March
+3. 42% recovery from February lows ($76 to $108)
+
+## Bearish Factors
+1. 11% below declining 200 SMA — long-term trend down
+2. RSI dropped 79→48 in one day — momentum gut punch
+3. 125.7M volume on decline — institutional distribution
+4. Price below 10 EMA — short-term momentum negative
+
+## Key Metrics Table
+Indicator     | Value   | Signal   | Direction | Strength
+Price         | $97.31  | Neutral  | Mixed     | Medium
+200 SMA       | $105.88 | Bearish  | Down      | Strong
+50 SMA        | $91.95  | Bullish  | Up        | Medium
+10 EMA        | $102.01 | Bearish  | Down      | Medium
+MACD          | 3.25    | Bullish  | Decelerating | Weak
+RSI           | 48.56   | Neutral  | Down      | Strong
+ATR           | 3.48    | High Vol | Increasing | Strong
+Volume        | 125.7M  | Bearish  | Distribution | Strong
+
+Overall: NFLX presents a mixed technical picture. Caution warranted until 200 SMA is retested.</pre>
+      </div>
+
+      <!-- Fundamentals -->
+      <div class="raw-file-block">
+        <div class="raw-file-title">📈 1_analysts/fundamentals.md — Fundamental Analysis</div>
+        <pre class="raw-content">Comprehensive Fundamental Analysis: Netflix, Inc. (NFLX)
+
+## Company Overview
+Market Cap: $410.86 billion | PE Ratio (TTM): 31.49 | Forward PE: 25.29 | PEG: 2.25
+Price to Book: 15.44 | Beta: 1.67 | 52-Week Range: $75.01 - $134.12
+
+## Financial Performance
+Revenue (TTM): $46.89 billion
+Quarterly Revenue: Q1 2025 ($10.25B) → Q1 2026 ($12.05B) = +17.6% YoY
+Gross Profit (TTM): $22.99 billion (Gross Margin: ~49%)
+Net Income (TTM): $13.37 billion | Profit Margin: 28.5% | Operating Margin: 32.3%
+
+## Balance Sheet
+Total Assets: $55.60B | Total Liabilities: $28.98B | Shareholders' Equity: $26.62B
+Current Ratio: 1.41 | Debt/Equity: 46.14% | Working Capital: $2.04B
+Cash & Equivalents: $9.03B | Total Debt: $14.46B | Net Debt: $5.43B
+
+## Cash Flow
+Free Cash Flow (TTM): $26.43 billion (extremely strong)
+Operating Cash Flow: $2.11B in Q4 2025
+Share Buybacks: $2.08B in Q4 2025 | Capex: $239M in Q4 2025
+
+## Return Metrics
+ROE: 48.5% (exceptional) | ROA: 15.4% | Book Value/Share: $6.30
+
+## Valuation
+PE Ratio: 31.5x TTM, 25.3x forward | PEG: 2.25 | Price to Book: 15.4x
+Forward EPS: $3.85 (vs current $3.09)
+
+## Bull Case
+- Dominant streaming market leadership with global scale
+- Exceptional ROE (48.5%) and robust FCF ($26.4B)
+- International expansion runway and pricing power
+- Proprietary content library creates competitive moat
+
+## Bear Case
+- High multiples may limit upside (PEG 2.25)
+- Intensifying competition from Disney+, Amazon Prime, Apple TV+
+- Economic sensitivity — potential consumer spending pullback
+- Revenue growth decelerating from hyper-growth past
+
+Key Metrics Summary: Market Cap $410.9B | PE 31.5x | Forward PE 25.3x | PEG 2.25 | Revenue $46.9B | Net Income $13.4B | Profit Margin 28.5% | ROE 48.5% | FCF $26.4B | Cash $9.0B | Debt/Equity 46.1% | Beta 1.67
+
+Assessment: Strong fundamental performance but valuation appears rich. Market has priced in significant future growth. High competitive pressures and debt levels warrant caution.</pre>
+      </div>
+
+      <!-- Bull Researcher -->
+      <div class="raw-file-block">
+        <div class="raw-file-title">🐂 2_research/bull.md — Bull Researcher Argument</div>
+        <pre class="raw-content">Bull Analyst: The bearish whispers about resistance levels, 200-day SMA, and volume spike on April 17th are classic noise. Focusing solely on short-term chart squiggles is a mistake — the real story is in the fundamental engine of Netflix, which is firing on all cylinders.
+
+The technical "distribution" and being below the 200-day SMA: A 42% rocket ride from the February lows. The market took profits at logical resistance. That's normal, not nefarious. The stock is consolidating above the rising 50-day SMA at $92. This isn't a breakdown; it's a bull flag forming after a powerful move.
+
+Fundamentals are overwhelming:
+- Revenue hit $46.9B TTM, growing nearly 18% YoY
+- Netflix is scaling globally with immense pricing power
+- They've navigated the password-sharing crackdown successfully
+- Every price increase drops straight to the bottom line (content costs are largely fixed)
+- Generating $26.4 BILLION in FCF over the last twelve months
+- ROE of 48.5% — ludicrously good
+- Balance sheet: $9B cash, manageable net debt, 32%+ operating margin
+- Actively buying back shares, returning FCF to shareholders
+
+The "oceanic moat": While competitors are pulling back on content spend, losing billions, and bundling services, Netflix has completed the pivot from growth-at-all-costs to a cash-generating machine. That FCF funds their industry-leading content budget, creating a virtuous cycle.
+
+Don't confuse a tactical retreat for a strategic defeat. The pullback to $97 is shaking out weak hands who only see charts. It's offering an entry point into a company that has transitioned from a subscriber-growth story to a profitability and cash flow story — and the market is still underpricing that shift. The path of least resistance, once consolidation completes, is a test and eventual break above that 200-day SMA.
+
+The technicals WILL catch up to the fundamentals. They always do.</pre>
+      </div>
+
+      <!-- Bear Researcher -->
+      <div class="raw-file-block">
+        <div class="raw-file-title">🐻 2_research/bear.md — Bear Researcher Argument</div>
+        <pre class="raw-content">Bear Analyst: You call it cutting through the noise; I call it ignoring the flashing red lights because the engine sounds good. Price is the ultimate truth-teller, and fundamentals don't exist in a vacuum.
+
+A 42% move from the lows is impressive. But calling a single-day, 9.7% collapse on volume 2.5 times the average a "healthy consolidation" is a serious misreading of market mechanics. That's institutional distribution. The tape doesn't lie: 125.7 million shares changed hands as the stock was slammed from $108 to $97. That's capital fleeing, not rotating. A failed breakout at major resistance — the 200-day SMA AND the Bollinger upper band. The market voted "sell."
+
+1. The "Cash Flow Juggernaut" and Valuation Trap: Yes, $26.4B in FCF is staggering. But the market knows this. The stock trades at a PEG ratio of 2.25. All that cash flow is already priced in, and then some. A forward P/E of 25x for a company in a ferociously competitive, maturing industry isn't "underpriced" — it's premium-priced for perfection. Where is the margin of safety? There is none.
+
+2. The "Oceanic Moat" is Leaking: Revenue growth is decelerating from hyper-growth past. The global "runway" is in lower-ARPU regions, which dilutes overall monetization. The content treadmill: to keep that 48.5% ROE, they must continually reinvest FCF back into content in an arms race where the cost of a "hit" keeps rising. Competitors like Disney and Apple can sustain losses indefinitely. Netflix doesn't have that luxury.
+
+3. The Technicals Aren't "Noise"; They're a Diagnosis: The stock is 11% below its declining 200-day SMA — the aggregate verdict of all market participants. The RSI's violent plunge from 79 to 48 in a day shows momentum evaporated instantly. These aren't conflicting signals; they're aligned in pointing to exhaustion.
+
+Core error: using backward-looking financial statements to justify a forward-looking investment while ignoring the forward-looking message of price action. The market is a discounting mechanism. This breakdown at key resistance on massive volume suggests smart money is positioning for a less rosy future.
+
+The pullback to $97 isn't a buying opportunity; it's a pause before testing $92 (50 SMA) and likely $76 (February lows). The burden of proof is on the bulls to reclaim the 200-day SMA. Until they do, the path of least resistance is down.</pre>
+      </div>
+
+      <!-- Research Manager -->
+      <div class="raw-file-block">
+        <div class="raw-file-title">🏛️ 2_research/manager.md — Research Manager Synthesis</div>
+        <pre class="raw-content">Research Manager Decision: SELL NFLX
+
+Both sides brought serious points, but I have to commit one direction.
+
+The bull analyst's case is fundamentally solid — Netflix's FCF generation, margin expansion, and competitive execution are exceptional. However, the bear analyst landed the more compelling punch for the current moment: the price action is a glaring red flag that can't be ignored.
+
+A 9.7% single-day drop on 2.5x average volume isn't "healthy consolidation"; it's institutional distribution at a major resistance confluence (200-day SMA). I've made the mistake in the past of clinging to a strong fundamental story while the chart was breaking down. Often, the chart is telling you that the fundamentals you see are already priced in, or that future expectations are shifting.
+
+The bear's argument that Netflix's stellar fundamentals are fully valued at this premium multiple (PEG 2.25, forward P/E 25x) is persuasive. There's no margin of safety here.
+
+My definitive recommendation: SELL NFLX (or initiate a short position for aggressive traders).
+
+Strategic Investment Plan:
+1. Action: Sell existing long positions in NFLX. For aggressive traders: buy put options or short with tight stop-loss above $105.
+2. Risk Management: Any short trade must use a stop-loss. A decisive weekly close back above the 200-day SMA (~$103-104) would invalidate the bearish breakdown.
+3. Price Targets: Initial downside target is the 50-day SMA near $92. A break below that opens a path toward the February lows near $76.
+4. Re-Entry Plan: Only consider re-entering if NFLX can recapture and hold above the 200-day SMA on strong volume. Alternatively, wait for a deeper pullback to $76-80 where risk/reward becomes favorable.
+
+The lesson: In a fully-valued stock, the chart often speaks first. Right now, it's saying "sell."</pre>
+      </div>
+
+      <!-- Trader -->
+      <div class="raw-file-block">
+        <div class="raw-file-title">📋 3_trading/trader.md — Trading Plan</div>
+        <pre class="raw-content">Trading Plan: SELL NFLX
+
+The current technical breakdown and premium valuation present a high-risk scenario for holding or buying NFLX. The decisive rejection at the 200-day SMA on elevated volume signals institutional distribution, outweighing the strong but already priced-in fundamentals. This confluence suggests a higher probability of near-term downside or consolidation.
+
+Applying the lesson emphasized — that in fully valued stocks, price action often leads fundamentals — I recommend acting on the technical failure to mitigate risk.
+
+FINAL TRANSACTION PROPOSAL: SELL</pre>
+      </div>
+
+      <!-- Aggressive Risk -->
+      <div class="raw-file-block">
+        <div class="raw-file-title">⚡ 4_risk/aggressive.md — Aggressive Risk Analyst</div>
+        <pre class="raw-content">Aggressive Analyst: The trader's decision to SELL is not a retreat; it's a tactical strike to seize control and maximize future reward.
+
+The conservative and neutral views are anchored to fundamentals and mixed signals, missing the critical narrative written in the price action itself.
+
+The conservative analyst is looking backward with "strong fundamentals." A 31.5x trailing P/E and a PEG of 2.25 scream that every ounce of that excellent ROE and cash flow is already priced in. The market is forward-looking. That massive volume spike to 125.7 million shares on April 17 — more than double the average — on a sharp decline from $108 is institutional distribution. When the big money exits at the 200-day SMA (~$106), they're voting that even these fundamentals don't justify pushing higher.
+
+The neutral analyst is paralyzed by "mixed signals." But the most powerful signal is the decisive rejection at a major long-term trend indicator on explosive volume. The RSI plummeted from 79 to 48 in a single day — a momentum gut punch. Waiting for "clearer confirmation" means waiting until the price has already broken down through your 50-day SMA support.
+
+The high-reward path is tactical aggression. Sell into this demonstrated weakness, preserve capital, and define strict re-entry parameters. By selling now, we free up capital to buy back in at a 5-10% discount, or deploy elsewhere while NFLX works off its excess.
+
+That's how you outperform: by respecting price action over narrative, and having the nerve to act when others hesitate.</pre>
+      </div>
+
+      <!-- Conservative Risk -->
+      <div class="raw-file-block">
+        <div class="raw-file-title">🛡️ 4_risk/conservative.md — Conservative Risk Analyst</div>
+        <pre class="raw-content">Conservative Analyst: The Aggressive Analyst's argument is dangerously myopic, mistaking recklessness for tactical genius. They are proposing a speculative market-timing gamble that contradicts our mandate of protecting assets and ensuring steady growth.
+
+Their entire thesis hinges on perfectly executing a sell-and-rebuy maneuver. Selling at $97 and buying back at a 5-10% discount as if it's a foregone conclusion is where their plan collapses. The technical data shows elevated volatility (ATR of 3.48). This makes pinpoint entries and exits exceptionally difficult. What if we sell, and the stock consolidates sideways, then breaks above the 200-day SMA on a new catalyst? We would have crystallized a loss and been forced to chase higher, permanently impairing capital.
+
+Large volume at resistance can also represent a transfer from weak to strong hands. By reacting to this signal, the aggressive analyst is proposing we trade alongside — and likely behind — institutional money flows, a game we are structurally disadvantaged to win.
+
+Jumping in and out based on institutional flows introduces transaction costs, tax implications, and timing risk that erodes compounding.
+
+"Dead money" is a trader's term. For an asset protector, it is the cost of ensuring we are positioned correctly for the long-term trend.
+
+The trader's decision to SELL is not risk management; it is risk substitution. Our adjustment: if a position must be adjusted, size should be reduced defensively, not liquidated speculatively. Any re-entry must be based on a confirmed resumption of the long-term trend above key resistance with stabilized volume — a condition that does not currently exist.</pre>
+      </div>
+
+      <!-- Neutral Risk -->
+      <div class="raw-file-block">
+        <div class="raw-file-title">⚖️ 4_risk/neutral.md — Neutral Risk Analyst</div>
+        <pre class="raw-content">Neutral Analyst: To the Aggressive Analyst — You're right that the price action is screaming a warning. The volume spike on April 17th is impossible to ignore. But your confidence in executing a perfect sell-low, buy-lower maneuver is overly optimistic. You're treating a high-volatility environment (ATR 3.48) as a predictable playground. The data shows the 50-day SMA is still rising at $91.95, which is a mere 5.5% below current price. What if this is just a violent shakeout, and the stock finds support here and grinds higher? Your plan assumes the pullback is a certainty.
+
+To the Conservative Analyst — You correctly identify the hubris in market timing. But dismissing the technical breakdown as mere noise is also wrong. When a stock with a premium valuation (31.5x P/E, 2.25 PEG) experiences a decisive rejection at a major trend line on double the average volume, it's not just volatility; it's a signal that the market's tolerance for that premium has temporarily snapped.
+
+Here's the balanced, moderate approach: neither a full sell nor a stubborn hold. The data supports a partial reduction — sell 30-50% of the position at current levels. This reduces exposure to the immediate breakdown, locks in some profits from the recovery from $76, and frees up capital while maintaining skin in the game.
+
+Then set clear, disciplined parameters: rebuy on a confirmed hold of the 50-day SMA with improving volume, or add back on a decisive break above the 200-day SMA. If the 50-day SMA breaks, average down at lower, stronger support levels.
+
+Act on the warning, but don't overreact.</pre>
+      </div>
+
+      <!-- Portfolio Manager -->
+      <div class="raw-file-block">
+        <div class="raw-file-title">💼 5_portfolio/decision.md — Portfolio Manager Final Decision</div>
+        <pre class="raw-content">Portfolio Manager: SELL NFLX
+
+Rating: SELL
+Action: Initiate an exit of all long positions in NFLX immediately. This is a defensive action to mitigate near-term downside risk following a decisive technical breakdown at a key resistance level, despite strong underlying fundamentals which are deemed fully valued.
+
+Time Horizon: Tactical, focusing on the next 1-3 months. Await clear technical resolution before re-entry.
+Risk Management: Stop-loss for any short trade above $105/$106. Re-entry signal for longs: confirmed weekly close above the 200-day SMA.
+
+Investment Thesis:
+The Aggressive Analyst provides the crucial evidence: the 9.7% single-day drop on April 17th on 125.7 million shares — 2.5x average volume — constitutes institutional-scale selling. This occurred at the precise resistance of the 200-day SMA (~$106). A 31.5x trailing P/E and a PEG of 2.25 offer no margin of safety.
+
+The Conservative Analyst correctly identifies the strength of NFLX's business (28.5% profit margin, $26.4B FCF) but errs in dismissing the technical signal as noise. In a stock with a premium multiple, price action often leads fundamentals.
+
+The Neutral Analyst's call for a partial reduction is ultimately a compromised position. The mixed signals — bullish 50-day SMA vs. bearish 200-day SMA — define a high-risk, low-conviction environment. A partial sell still leaves capital exposed to the drawdown through the 50-day SMA (~$92).
+
+The most prudent synthesis: act on the clearest signal — the market's forceful rejection of NFLX at a premium price. Exit and re-evaluate at stronger support ($76-80). We sell not because the fundamentals are broken, but because the price has broken at a point where fundamentals provide no cushion.</pre>
+      </div>
+
     </div>
   </div>
 
